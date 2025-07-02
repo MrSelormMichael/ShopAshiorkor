@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ShopAshiorkor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@400;900&display=swap" rel="stylesheet"> 
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+      
+:root {
+  --primary-color1: #e8d8c3; /* Soft beige */
+  --primary-color: #c0945ace;
+  --secondary-color: #5e4a3a; /* Earthy brown */
+  --accent-color: #c7a97f; /* Warm gold */
+  --text-color: #333;
+  --light-bg: #f9f5f0;
+  }      
+      
+body {
+	font-family: "Elsie Swash Caps", serif;
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.contain {
+    margin-top: 5%;
+    margin-bottom: 100px;
+}
+.navbar-nav a {
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+.navbar-light .navbar-brand {
+	color: #000;
+	font-size: 25px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+.navbar-brand span {
+	color: green;
+
+}
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+	color: #000;
+}
+.navbar-light .navbar-nav .nav-link {
+	color: #000;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+	color: #000;
+}
+.w-100 {
+	height: 100vh;
+}
+.navbar-toggler {
+	padding: 1px 5px;
+	font-size: 18px;
+	line-height: 0.3;
+	background: #fff;
+}
+
+.card {
+    width: 100%;
+    height: 380px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    border: none;
+    background-color: transparent;
+    margin-bottom: 30px;
+}
+
+.card .box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    transform-style: preserve-3d;
+    transition: 0.6s;
+    backface-visibility: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.card .box.front {
+    background: #1f1708;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .box.back {
+    background-color: #fff;
+    transform: rotateY(180deg);
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .box.front img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--primary-color);
+    margin-bottom: 20px;
+}
+.card:hover .box.front {
+    transform: rotateY(180deg);
+}
+
+.card:hover .box.back {
+    transform: rotateY(360deg);
+}
+
+.box.front h2 {
+    font-family: "Elsie Swash Caps", serif;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #ffff;
+}
+
+.box.front h4 {
+    font-size: 1rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.socials i {
+	margin: 0 15px;
+}
+.card .box.back {
+    position: absolute;
+    background: #e0e8db;
+    transform: rotateY(180deg);
+    padding: 20px 30px;
+    text-align: center;
+    user-select: none;
+}
+
+.card .box.back .fa-quote-left {
+    font-size: 1.5rem;
+    color: #e5c641;
+    margin-bottom: 15px;
+}
+
+
+.card .box.back p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #fff5f5;
+}
+
+.card:hover .box.back {
+    transform: rotateY(360deg);
+}
+
+.site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+.social-icons a.dribbble:hover
+{
+  background-color:#ea4c89
+}
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+
+@media (max-width: 768px) {
+	.product-area {
+		width: 48%;
+	}
+	.navbar-nav {
+		text-align: center;
+	}
+	.navbar-collapse {
+		background: green;
+	}
+	.carousel-caption {
+		bottom: 370px;
+	}
+	.carousel-caption p {
+		width: 100%;
+	}
+	.navbar-collapse .nav-link {
+		color: #fff !important;
+	}
+	.carousel-caption {
+		bottom: 0;
+		text-align: center;
+	}
+}
+@media (max-width: 767px) {
+	.product-area {
+		width: 100%;
+	}
+	.navbar-nav {
+		text-align: center;
+	}
+	.navbar-collapse {
+		background: green;
+	}
+	.navbar-collapse .nav-link {
+		color: #fff !important;
+	}
+	.carousel-caption {
+		bottom: 0;
+		text-align: center;
+	}
+	.carousel-caption h5 {
+		font-size: 17px;
+	}
+	.carousel-caption p {
+		width: 100%;
+		line-height: 1.6;
+		font-size: 12px;
+	}
+	.banner-info .btn {
+		padding: 0 15px;
+		font-size: 20px;
+	}
+	.imgBox .img-fluid {
+		max-width: 80%;
+		height: auto;
+	}
+}
+
+/* Section header styling */
+.section__header {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: "Elsie Swash Caps", serif;
+    position: relative;
+    padding-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.section__header:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+/* Overall page styling improvements */
+body {
+    font-family: "Elsie Swash Caps", serif;
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.section__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.about__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about__content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--secondary-color)
+}
+
+.team-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 100%;
+            height: 500px;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            border: none;
+            background-color: transparent;
+            margin-bottom: 30px;
+            position: relative;
+            transition: transform 0.8s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card .box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backface-visibility: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .card .box.front {
+            background: linear-gradient(135deg, var(--primary-color), #f0e6d6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card .box.back {
+            background: linear-gradient(135deg, var(--secondary-color), #6b5a4a);
+            transform: rotateY(180deg);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+
+        .card:hover .box.front {
+            transform: rotateY(180deg);
+        }
+
+        .card:hover .box.back {
+            transform: rotateY(360deg);
+        }
+
+        .card .box.front img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .box.front h2 {
+            font-family: "Elsie Swash Caps", serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .box.front h4 {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .box.front .socials {
+            margin-top: 15px;
+        }
+
+        .box.front .socials i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .box.front .socials i:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .box.back .fa-quote-left {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        .box.back p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+	</style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="index.html">ShopAshiorkor</a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="catalogue.html">CATALOGUE</a></li>
+            <li><a href="events.html">EVENTS</a></li>
+            <li><a href="admin.html">LOGIN</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+    </nav>
+
+    <section class="section__container">
+      <h2 class="section__header">ABOUT US</h2>
+      <div class="about__content">
+          <p>Welcome to ShopAshiorkor, a minimalist brand carefully crafted and designed for the stylish woman. Our limited ready-to-wear line is handmade in Ghana, reflecting the rich culture and artistry of Africa.</p>
+          <p>Our mission is to empower women through fashion, offering unique and high-quality clothing that celebrates individuality and elegance.</p>
+      </div>
+  </section>
+
+    <div class="contain">
+      <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleSlidesOnly">
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-6">
+                          <div class="card">
+                              <div class="box front">
+                                <img alt="Awurabena Akoto" src="images/sandra.jpg">
+                                <h2>Awurabena Akoto</h2>
+                                <h4>Founder & Creative Director</h4>
+                            </div>
+                              <div class="box back">
+                                  <span class="fa fa-quote-left"></span>
+                                  <p>
+                                    Hi! I’m Awurabena. 
+I’m the founder, creative director and lead designer at Ashiorkor, and I love clothes — beautiful clothes. I started Ashiorkor in June 2023 to make myself and my friends functional, stylish and multi-wear wardrobe staples, a venture which is now a growing community of women passionate about expressing their unique style through timeless and thoughtfully crafted clothing.
+I believe style should be effortless and non-restrictive, which is why structure, pure form, refined minimalism and timeless appeal are the pillars of our process at Ashiorkor. 
+At the heart of it, I’m an art girl drawn to nature and breathtaking landscapes, both heavy influences on the Ashiorkor design process. When I'm not in the studio, you can find me at the beach or a cosy cafe — never without coffee or a good book.
+Ashiorkor started with friendship as its core and we make our pieces with community, comfort and love at heart.
+Thank you for choosing Ashiorkor. Take what you need, and express your true self fearlessly.
+<br>Love,</br>
+Awurabena.
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="card">
+                              <div class="box front">
+                                  <img alt="" src="images/newton.jpg">
+                                  <h2>Shop Ashiorkor</h2>
+                                  <h4>Our Brand Ethos</h4>
+                              </div>
+                              <div class="box back">
+                                  <span class="fa fa-quote-left"></span>
+                                  <p>
+                                    Ashiorkor, is a ready-to-wear line founded by digital marketing expert and lifestyle influencer Awurabena Akoto.
+Our brand  ethos is simple: we make pieces that make you feel free, comfortable and chic without a need for conformity, ensuring that you can wear them all year round.
+To that end, Ashiorkor creates versatile, everyday all-size friendly pieces that blend vibrancy and effortless elegance for the bold and stylish woman.
+
+Each piece is thoughtfully designed and carefully handmade by our small team at our Accra studio.
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>    
+      </div>
+  </div>
+
+<section class="banner">
+    <div class="banner__container">
+        <img src="assets/images/Aban.png" alt="banner">
+        <img src="assets/images/Akofena.png" alt="banner">
+        <img src="assets/images/Akoma.png" alt="banner">
+        <img src="assets/images/Aya.png" alt="banner">
+        <img src="assets/images/Denkyem.png" alt="banner">
+        <img src="assets/images/Gye Nyame.png" alt="banner">
+        <img src="assets/images/Sankofa.png" alt="banner">
+        <img src="assets/images/Duafe.png" alt="banner">
+    </div>
+</section>
+
+    <footer>
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <div class="footer__logo">
+                    <a href="#">ShopAshiorkor</a>
+                </div>
+                <p>Complete your style with awesome pieces from us.</p>
+                <ul class="footer__socials">
+                    <li><a href="https://www.facebook.com/share/1KrhFkdGkz/?mibextid=wwXIfr"><i class="ri-facebook-fill"></i></a></li>
+                    <li><a href="https://www.instagram.com/shopashiorkor?igsh=YnNsdDVpcXV5cWk%3D&utm_source=qr"><i class="ri-instagram-line"></i></a></li>
+                    <li><a href="https://x.com/shopashiorkor?s=21"><i class="ri-twitter-fill"></i></a></li>
+                    <li><a href="https://www.tiktok.com/@ashiorkor_?_t=ZM-8vOar96WDdH&_r=1"><i class="ri-tiktok-fill"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Company</h4>
+                <ul class="footer__links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul class="footer__links">
+                    <li><a href="contact us">Store Location</a></li>
+
+                </ul>
+            </div>
+           
+        </div>
+        <div class="footer__bar">
+            Copyright © 2024 ShopAshiorkor. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
