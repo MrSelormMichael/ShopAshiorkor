@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - ShopAshiorkor</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Pontano+Sans:wght@700&family=Varela&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Pontano+Sans:wght@700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Varela&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Product Details Styles */
+.product-details {
+    padding: 2rem 1rem;
+    margin-top: 80px;
+}
+
+.product-container {
+    display: grid;
+    gap: 4rem;
+    background-color: var(--white);
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Product Images Enhanced */
+.product-images {
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.main-image {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.main-image:hover {
+    transform: scale(1.02);
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+.thumbnail {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.thumbnail:hover, .thumbnail.active {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(173, 109, 24, 0.3);
+}
+
+/* Product Info Enhanced */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.product-info h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 300;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.product-price {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.product-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* Enhanced Size Selection */
+.size-selection h3, .quantity-selector h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.size-options {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.size-option {
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    min-width: 50px;
+    text-align: center;
+    background-color: var(--white);
+}
+
+.size-option:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(173, 109, 24, 0.05);
+    transform: translateY(-2px);
+}
+
+.size-option.selected {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(173, 109, 24, 0.3);
+}
+
+/* Enhanced Quantity Selector */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.quantity-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.quantity-input {
+    width: 60px;
+    height: 45px;
+    text-align: center;
+    padding: 0;
+    border: none;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: var(--white);
+}
+
+/* Enhanced Form Styles */
+.order-form {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid #e9ecef;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(173, 109, 24, 0.1);
+}
+
+/* Enhanced Buttons */
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.whatsapp-btn:hover {
+    background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-top: 2rem;
+}
+
+.back-btn:hover {
+    background-color: var(--text-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Product Specs Enhanced */
+.product-specs {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    margin-top: 2rem;
+}
+
+.product-specs h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-specs p {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.product-specs p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.product-specs strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (width > 768px) {
+    .product-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        padding: 4rem;
+    }
+    
+    .product-info h1 {
+        font-size: 3.5rem;
+    }
+    
+    .main-image {
+        height: 700px;
+    }
+}
+
+@media (width <= 768px) {
+    .product-details {
+        padding: 1rem 0.5rem;
+    }
+    
+    .product-container {
+        padding: 2rem;
+        gap: 3rem;
+    }
+    
+    .main-image {
+        height: 400px;
+    }
+    
+    .product-info h1 {
+        font-size: 2.2rem;
+    }
+    
+    .product-price {
+        font-size: 2rem;
+    }
+    
+    .whatsapp-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1.5rem;
+    }
+}
+
+/* Loading and Animation Effects */
+.product-not-found {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-dark);
+}
+
+.product-not-found h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.product-not-found p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+/* Image zoom effect */
+.main-image {
+    cursor: zoom-in;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition: all 0.3s ease;
+}
+
+        .product-details {
+            padding: 5rem 1rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .product-container {
+            display: grid;
+            gap: 3rem;
+            background-color: var(--white);
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (width > 768px) {
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+            }
+        }
+        
+        .product-images {
+            position: relative;
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 1000px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+        
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--primary-color);
+        }
+        
+        .product-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .product-price {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .product-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .size-selection {
+            margin-bottom: 2rem;
+        }
+        
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .size-option {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .size-option:hover, .size-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .order-form {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--text-dark);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .main-image {
+                height: 350px;
+            }
+            
+            .product-info h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="index.html">ShopAshiorkor</a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="catalogue.html">CATALOGUE</a></li>
+            <li><a href="events.html">EVENTS</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+    </nav>
+
+    <section class="product-details">
+        <div class="product-container" id="product-container">
+            <!-- Product content will be dynamically inserted here -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <div class="footer__logo">
+                    <a href="#">ShopAshiorkor</a>
+                </div>
+                <p>Complete your style with awesome pieces from us.</p>
+                <ul class="footer__socials">
+                    <li><a href="https://www.facebook.com/share/1KrhFkdGkz/?mibextid=wwXIfr"><i class="ri-facebook-fill"></i></a></li>
+                    <li><a href="https://www.instagram.com/shopashiorkor?igsh=YnNsdDVpcXV5cWk%3D&utm_source=qr"><i class="ri-instagram-line"></i></a></li>
+                    <li><a href="https://x.com/shopashiorkor?s=21"><i class="ri-twitter-fill"></i></a></li>
+                    <li><a href="https://www.tiktok.com/@ashiorkor_?_t=ZM-8vOar96WDdH&_r=1"><i class="ri-tiktok-fill"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Company</h4>
+                <ul class="footer__links">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul class="footer__links">
+                    <li><a href="#">Store Location</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bar">
+            Copyright © 2024 ShopAshiorkor. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+    // Get product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    
+    // Enhanced product data with more details
+    const products = [
+        {
+            id: 1,
+            name: "Adinkra Print Dress",
+            price: "GHS 450.00",
+            description: "Beautiful Adinkra print dress made from premium African fabric. This stunning piece features traditional motifs that tell stories of wisdom, courage, and unity. Perfect for both casual and formal occasions, this dress combines cultural heritage with contemporary style. Handcrafted with attention to detail and designed for the modern African woman.",
+            image: "assets/images/Products1.jpeg",
+            hoverImage: "assets/images/Product1.jpeg",
+            sizes: ["S", "M", "L", "XL"],
+            weight: "0.8kg",
+            dimensions: "Length: 120cm, Bust: 90-100cm",
+            material: "100% Premium Cotton",
+            care: "Hand wash cold, hang dry"
+        },
+        {
+            id: 2,
+            name: "Kente Wrap Skirt",
+            price: "GHS 380.00",
+            description: "Elegant Kente wrap skirt with vibrant colors and traditional patterns. This versatile piece showcases the rich heritage of Ghanaian textile artistry. The adjustable waist ensures a perfect fit for various body types. Comes with a matching belt that can be styled in multiple ways.",
+            image: "assets/images/Products2.jpeg",
+            hoverImage: "assets/images/product2.jpeg",
+            sizes: ["One Size"],
+            weight: "0.5kg",
+            dimensions: "Length: 80cm, Waist: Adjustable 70-110cm",
+            material: "Authentic Kente Cloth",
+            care: "Dry clean recommended"
+        },
+        {
+            id: 3,
+            name: "Batik Maxi Dress",
+            price: "GHS 520.00",
+            description: "Flowy batik maxi dress with intricate hand-dyed patterns. This breathtaking piece showcases the ancient art of batik, where each pattern tells a unique story. Lightweight and comfortable for all-day wear, perfect for both casual outings and special occasions. Features side slits for ease of movement and an elegant silhouette.",
+            image: "assets/images/Products3.jpeg",
+            hoverImage: "assets/images/product3.jpeg",
+            sizes: ["S", "M", "L"],
+            weight: "0.7kg",
+            dimensions: "Length: 140cm, Bust: 85-95cm",
+            material: "Hand-dyed Cotton Batik",
+            care: "Machine wash cold, gentle cycle"
+        }
+        // Add more products as needed
+    ];
+    
+    // Find the product by ID
+    const product = products.find(p => p.id == productId);
+    
+    // Enhanced product display function
+    document.addEventListener('DOMContentLoaded', function() {
+        const productContainer = document.getElementById('product-container');
+        
+        if (product) {
+            productContainer.innerHTML = `
+                <div class="product-images">
+                    <img src="${product.image}" alt="${product.name}" class="main-image" id="main-image">
+                    <div class="thumbnail-container">
+                        <img src="${product.image}" alt="${product.name}" class="thumbnail active" onclick="changeImage('${product.image}', this)">
+                        <img src="${product.hoverImage}" alt="${product.name}" class="thumbnail" onclick="changeImage('${product.hoverImage}', this)">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h1>${product.name}</h1>
+                    <div class="product-price">${product.price}</div>
+                    <p class="product-description">${product.description}</p>
+                    
+                    <div class="size-selection">
+                        <h3>Select Size</h3>
+                        <div class="size-options">
+                            ${product.sizes.map(size => `
+                                <div class="size-option" onclick="selectSize(this)">${size}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <h3>Quantity</h3>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)" type="button">−</button>
+                            <input type="number" value="1" min="1" class="quantity-input" id="quantity" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(1)" type="button">+</button>
+                        </div>
+                    </div>
+                    
+                    <form class="order-form" id="order-form">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--text-dark); font-size: 1.3rem;">Personal Details</h3>
+                        
+                        <div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                            <div class="form-group">
+                                <label for="height">Height (cm) *</label>
+                                <input type="number" id="height" name="height" required placeholder="e.g. 170">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="weight">Weight (kg) *</label>
+                                <input type="number" id="weight" name="weight" required placeholder="e.g. 65">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notes">Special Requests / Custom Measurements</label>
+                            <textarea id="notes" name="notes" rows="4" placeholder="Any special requests, custom measurements, or additional information..."></textarea>
+                        </div>
+                        
+                        <a href="#" class="whatsapp-btn" id="whatsapp-btn" onclick="sendWhatsAppMessage(event)">
+                            <i class="ri-whatsapp-line"></i> Order via WhatsApp
+                        </a>
+                    </form>
+                    
+                    <div class="product-specs">
+                        <h3>Product Information</h3>
+                        <p><strong>Material:</strong> <span>${product.material}</span></p>
+                        <p><strong>Weight:</strong> <span>${product.weight}</span></p>
+                        <p><strong>Dimensions:</strong> <span>${product.dimensions}</span></p>
+                        <p><strong>Care Instructions:</strong> <span>${product.care}</span></p>
+                    </div>
+                    
+                    <a href="catalogue.html" class="back-btn">
+                        <i class="ri-arrow-left-line"></i> Back to Catalogue
+                    </a>
+                </div>
+            `;
+        } else {
+            productContainer.innerHTML = `
+                <div class="product-not-found">
+                    <h1>Product Not Found</h1>
+                    <p>Sorry, the product you're looking for doesn't exist or has been removed.</p>
+                    <a href="catalogue.html" class="back-btn">
+                        <i class="ri-arrow-left-line"></i> Back to Catalogue
+                    </a>
+                </div>
+            `;
+        }
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    });
+    
+    // Enhanced image change function
+    function changeImage(src, element) {
+        const mainImage = document.getElementById('main-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        
+        if (mainImage) {
+            mainImage.style.opacity = '0.7';
+            setTimeout(() => {
+                mainImage.src = src;
+                mainImage.style.opacity = '1';
+            }, 150);
+        }
+        
+        thumbnails.forEach(thumb => thumb.classList.remove('active'));
+        if (element) element.classList.add('active');
+    }
+    
+    // Enhanced size selection
+    function selectSize(element) {
+        document.querySelectorAll('.size-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        element.classList.add('selected');
+        
+        // Add a subtle animation
+        element.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            element.style.transform = 'scale(1)';
+        }, 100);
+    }
+    
+    // Enhanced quantity change
+    function changeQuantity(change) {
+        const quantityInput = document.getElementById('quantity');
+        if (quantityInput) {
+            let newValue = parseInt(quantityInput.value) + change;
+            if (newValue < 1) newValue = 1;
+            if (newValue > 99) newValue = 99; // Set a reasonable maximum
+            quantityInput.value = newValue;
+        }
+    }
+    
+    // Enhanced WhatsApp message function
+    function sendWhatsAppMessage(event) {
+        event.preventDefault();
+        
+        const form = document.getElementById('order-form');
+        const selectedSize = document.querySelector('.size-option.selected');
+        const quantity = document.getElementById('quantity')?.value || '1';
+        const height = document.getElementById('height')?.value || '';
+        const weight = document.getElementById('weight')?.value || '';
+        const notes = document.getElementById('notes')?.value || '';
+        
+        // Validation
+        if (!selectedSize) {
+            alert('Please select a size before placing your order.');
+            return;
+        }
+        
+        if (!height || !weight) {
+            alert('Please provide your height and weight for the best fit.');
+            return;
+        }
+        
+        // Create enhanced message
+        const message = `🛍️ *New Order from ShopAshiorkor Website*
+
+📦 *Product Details:*
+- Name: ${product.name}
+- Price: ${product.price}
+- Size: ${selectedSize.textContent}
+- Quantity: ${quantity}
+
+👤 *Customer Measurements:*
+- Height: ${height}cm
+- Weight: ${weight}kg
+
+${notes ? `📝 *Special Requests:*\n${notes}\n\n` : ''}💬 Hi! I'm interested in ordering this item. Please let me know about:
+- Availability
+- Payment options  
+- Delivery details
+- Estimated delivery time
+
+Thank you! 😊`;
+        
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/233244646044?text=${encodedMessage}`;
+        
+        // Add a brief loading state
+        const btn = event.target.closest('.whatsapp-btn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="ri-loader-4-line"></i> Opening WhatsApp...';
+        btn.style.pointerEvents = 'none';
+        
+        setTimeout(() => {
+            window.open(whatsappUrl, '_blank');
+            btn.innerHTML = originalText;
+            btn.style.pointerEvents = 'auto';
+        }, 500);
+    }
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
